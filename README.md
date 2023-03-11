@@ -54,7 +54,7 @@ Join the revolution in patient safety with **Maki**.
 
 
 # Contributors
-- Aminu Abdusalam [@aminuabdusalam](https://github.com/brianwu568)
+- Aminu Abdusalam [@aminuabdusalam](https://github.com/aminuabdusalam)
 - Mariaassumpta Ezedimma
 - Temiloluwa Ige [@reeeels](https://github.com/reeeels)
 - Olakitan Oguntuase [@olakt-ogun](https://github.com/olakt-ogun)
