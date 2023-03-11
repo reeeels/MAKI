@@ -17,7 +17,7 @@ def data_extractor(narrative, stop_tokens = None):
     # prompt = f"Using en_core_sci_lg version 0.5.1, identify and classify the data found in a patient case narrative {narrative} based on the labels ADVERSE_EVENTS, SERIOUS_ADVERSE_EVENTS, UNANTICIPATED_PROBLEMS, PROTOCOL_DEVIATIONS. Return the result as a dictionary with the labels as keys and list of data as values. If the label has no data assign an empty list as its value."
 
 
-    openai.api_key = "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 " # Replace with your API key
+    openai.api_key = "API_KEY" # Replace with your API key
 
     model = "text-davinci-002"
     params = {
