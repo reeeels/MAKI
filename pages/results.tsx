@@ -10,22 +10,9 @@ const Results = () => {
 
     const handleFileRead = (e: any) => {
         const content = e.target.result
-        console.log(content)
+        setFileData(content)
 
     }
-    // const handleFileRead = async (event: any) => {
-    //     const content = event.target.result;
-    //     const pdf = await pdfjs.getDocument({ data: content }).promise;
-    //     const numPages = pdf.numPages;
-    //     console.log(`Number of pages: ${numPages}`);
-    //     for (let i = 1; i <= numPages; i++) {
-    //         const page = await pdf.getPage(i);
-    //         const textContent = await page.getTextContent();
-    //         const text = textContent.items.map((item) => item.str).join('');
-    //         console.log(`Page ${i}: ${text}`);
-    //         // do something with the page text
-    //     }
-    // }
 
     const handleFileChosen = (e: any) => {
         const reader = new FileReader()
