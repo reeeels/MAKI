@@ -35,8 +35,8 @@ In addition, **Maki** uses a pre-trained spaCy model called **“en_core_sci_lg�
 - *inserts more accomplishments*
 
 # What we learned:
-- Clarity on the best way to merge interests in technology and healthcare
-- As a Biochemistry major, I experienced how innovating and interesting technology and programming is. 
+- Gained clarity on the best way to merge interests in technology and healthcare
+- Experienced how innovating and interesting technology and programming is. 
 - *insert more what we’ve learned*
 
 # What’s next for Maki:
@@ -55,6 +55,6 @@ Join the revolution in patient safety with **Maki**.
 
 # Contributors
 - Aminu Abdusalam [@aminuabdusalam](https://github.com/aminuabdusalam)
-- Mariaassumpta Ezedimma
+- Mariaassumpta Ezedimma [@mariaeze](https://github.com/mariaeze)
 - Temiloluwa Ige [@reeeels](https://github.com/reeeels)
 - Olakitan Oguntuase [@olakt-ogun](https://github.com/olakt-ogun)
