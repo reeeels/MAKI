@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react'
 import pdfjs from 'pdfjs-dist'
 import styles from '@/styles/Home.module.css'
+// import annyang from 'annyang';
 
 const Results = () => {
     const data: Number = 1
@@ -30,9 +31,7 @@ const Results = () => {
         console.log(text)
     }
 
-
-
-
+     
     console.log(text)
 
 
@@ -42,7 +41,7 @@ const Results = () => {
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
-            <main className='container main'>
+            <main className='container'>
                 <div className='row mt-5'>
                     <form className='col-5 d-flex flex-column mt-5 py-5'>
                         <div className="input-group mt-5">
@@ -50,7 +49,7 @@ const Results = () => {
                             {/* <button className='btn btn-light btn-outline-secondary text-dark'>Upload</button> */}
                         </div>
                         <div className="input-group mt-5">
-                            <textarea className="form-control shadow-none" placeholder='Type something...' rows={10} onChange={handleText}>{text}</textarea>
+                            <textarea className="form-control shadow-none" placeholder='Type in the case narrative...' rows={10} onChange={handleText}>{text}</textarea>
                         </div>
                         <div className='align-items-right'>
                             <button className='btn btn-light btn-outline-secondary text-dark float-right mt-3' disabled={!text} onClick={handleGenerate}>Generate</button>
