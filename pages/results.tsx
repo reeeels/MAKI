@@ -49,7 +49,7 @@ const Results = () => {
                             {/* <button className='btn btn-light btn-outline-secondary text-dark'>Upload</button> */}
                         </div>
                         <div className="input-group mt-5">
-                            <textarea className="form-control shadow-none" placeholder='Type in the case narrative...' rows={10} onChange={handleText}>{text}</textarea>
+                            <textarea className="form-control shadow-none" placeholder='Type in the case note narrative...' rows={10} onChange={handleText}>{text}</textarea>
                         </div>
                         <div className='align-items-right'>
                             <button className='btn btn-light btn-outline-secondary text-dark float-right mt-3' disabled={!text} onClick={handleGenerate}>Generate</button>
