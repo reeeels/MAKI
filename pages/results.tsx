@@ -2,12 +2,15 @@ import Head from 'next/head'
 import { useState } from 'react'
 import pdfjs from 'pdfjs-dist'
 import styles from '@/styles/Home.module.css'
-// import annyang from 'annyang';
+
+
 
 const Results = () => {
     const data: Number = 1
     const [fileData, setFileData] = useState(null)
     const [text, setText] = useState(null)
+    const [narrativeInput, setNarrativeInput] = useState("");
+    const [result, setResult] = useState();
 
     const handleFileRead = (e: any) => {
         const content = e.target.result
@@ -31,6 +34,33 @@ const Results = () => {
         console.log(text)
     }
 
+    async function onSubmit(event) {
+        event.preventDefault();
+        try {
+          const response = await fetch("/api/data_extractor", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            // body: JSON.stringify(animalInput ),
+            body: JSON.stringify({ narrative: narrativeInput }),
+          });
+    
+          const data = await response.json();
+          console.log(data)
+          if (response.status !== 200) {
+            throw data.error || new Error(`Request failed with status ${response.status}`);
+          }
+    
+          setResult(data.result);
+          setNarrativeInput("");
+        } catch(error) {
+          // Consider implementing your own error handling logic here
+          console.error(error);
+          alert(error.message);
+        }
+      }
+
      
     console.log(text)
 
@@ -43,7 +73,16 @@ const Results = () => {
             </Head>
             <main className='container'>
                 <div className='row mt-5'>
-                    <form className='col-5 d-flex flex-column mt-5 py-5'>
+                    <form className='col-5 d-flex flex-column mt-5 py-5' onSubmit={onSubmit}>
+                    <input
+                        type="text"
+                        name="narrative"
+                        placeholder="Enter a narrative"
+                        value={narrativeInput}
+                        onChange={(e) => setNarrativeInput(e.target.value)}
+                    />
+                        <input type="submit" value="Generate" />
+                        
                         <div className="input-group mt-5">
                             <input type="file" className="form-control" id="inputGroupFile01" onChange={handleFileChosen} />
                             {/* <button className='btn btn-light btn-outline-secondary text-dark'>Upload</button> */}
