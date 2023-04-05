@@ -40,15 +40,17 @@ const Table = (props) => {
                         </div>
                         <div className='d-flex flex-row'>
                             <div className={styles.box}>
-                                <h4 className={styles.label}>MEDICATION</h4>
+                                <h4 className={styles.label}>MEDICATIONS</h4>
                             </div>
-                            {parsed[0].MEDICATION.map((medication) => (
-                                <h4 className={styles.text}>{medication},</h4>
-                            ))}
+                            <div style={{display: 'flex', flexDirection: 'column'}}>
+                                {parsed[0].MEDICATION.map((medication) => (
+                                    <h4 className={styles.text}>{medication},</h4>
+                                ))}
+                            </div>
                         </div>
                         <div className='d-flex flex-row'>
                             <div className={styles.endbox}>
-                                <h4 className={styles.label}>TREATMENT</h4>
+                                <h4 className={styles.label}>TREATMENTS</h4>
                             </div>
                             <div className={styles.textbox}>
                                 {parsed[0].TREATMENT.map((treatment) => (
@@ -58,7 +60,7 @@ const Table = (props) => {
                         </div>
                         <div className='d-flex flex-row'>
                             <div className={styles.endbox}>
-                                <h4 className={styles.label}>SOCIAL FACTOR</h4>
+                                <h4 className={styles.label}>SOCIAL FACTORS</h4>
                             </div>
                             {parsed[0].SOCIAL_FACTOR.map((factor) => (
                                 <h4 className={styles.text}>{factor},</h4>

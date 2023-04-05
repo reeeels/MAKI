@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from '@/styles/index.module.css';
 import Table from './table';
+import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
 import { motion } from 'framer-motion';
 
 const Results = () => {
@@ -42,6 +43,10 @@ const Results = () => {
     } catch (error) {
       alert(error.message);
     }
+  }
+
+  const printPage = () => {
+    window.print();
   }
 
 
@@ -93,8 +98,10 @@ const Results = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: 'spring', stiffness: 50 }}
             className='col-lg-8 border-left border-dark py-5'
-          >
-            <h1 className={styles.title}>Results</h1>
+          ><div className='d-flex flex-row justify-content-between'>
+              <h1 className={styles.title}>Results</h1>
+              <span><button className='btn btn-outline-secondary' onClick={printPage}><LocalPrintshopOutlinedIcon fontSize='medium' /></button></span>
+            </div>
             <Table data={result} />
           </motion.div>
         }
