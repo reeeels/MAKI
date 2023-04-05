@@ -32,14 +32,12 @@ const Results = () => {
       });
 
       const data = await response.json();
-      console.log(data)
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
       const tmp = data.result
       setResult(data.result);
-      console.log(result)
     } catch (error) {
       alert(error.message);
     }
@@ -62,7 +60,6 @@ const Results = () => {
       });
 
       const data = await response.json();
-      console.log(data)
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
