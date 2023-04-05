@@ -2,12 +2,32 @@ import Head from 'next/head'
 import { useState } from 'react'
 import pdfjs from 'pdfjs-dist'
 import styles from '@/styles/Home.module.css'
-// import annyang from 'annyang';
+// import Table from './table'
+import JsonTable from './JsonTable';
+
+
+
+import { convertData } from './data_conversion';
+
+const inputData = {
+  name: ['Anom', 'Megha', 'Subham'],
+  age: ['19', '19', '25'],
+  gender: ['Male', 'Female', 'Male'],
+};
+
+const outputData = convertData(inputData);
+
+console.log(outputData);
+
+
+
 
 const Results = () => {
     const data: Number = 1
     const [fileData, setFileData] = useState(null)
     const [text, setText] = useState(null)
+    const [narrativeInput, setNarrativeInput] = useState("");
+    const [result, setResult] = useState();
 
     const handleFileRead = (e: any) => {
         const content = e.target.result
@@ -26,10 +46,65 @@ const Results = () => {
         setText(e.target.value)
     }
 
-    const handleGenerate = (e: any) => {
-        e.preventDefault()
-        console.log(text)
-    }
+    // const handleGenerate = (e: any) => {
+    //     e.preventDefault()
+    //     console.log(text)
+    // }
+
+    async function handleGenerate(e: any) {
+        e.preventDefault();
+        try {
+          const response = await fetch("/api/data_extractor", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            // body: JSON.stringify(animalInput ),
+            body: JSON.stringify({ narrative: narrativeInput }),
+          });
+    
+          const data = await response.json();
+          console.log(data)
+          if (response.status !== 200) {
+            throw data.error || new Error(`Request failed with status ${response.status}`);
+          }
+    
+          setResult(data.result);
+          setNarrativeInput("");
+        } catch(error) {
+          // Consider implementing your own error handling logic here
+          console.error(error);
+          alert(error.message);
+        }
+      }
+
+
+    async function onSubmit(event) {
+        event.preventDefault();
+        try {
+          const response = await fetch("/api/data_extractor", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            // body: JSON.stringify(animalInput ),
+            body: JSON.stringify({ narrative: narrativeInput }),
+          });
+    
+          const data = await response.json();
+          console.log(data)
+          if (response.status !== 200) {
+            throw data.error || new Error(`Request failed with status ${response.status}`);
+          }
+    
+          setResult(data.result);
+          setNarrativeInput("");
+        } catch(error) {
+          // Consider implementing your own error handling logic here
+          console.error(error);
+          alert(error.message);
+        }
+      }
 
      
     console.log(text)
@@ -43,17 +118,24 @@ const Results = () => {
             </Head>
             <main className='container'>
                 <div className='row mt-5'>
-                    <form className='col-5 d-flex flex-column mt-5 py-5'>
+                    <form className='col-5 d-flex flex-column mt-5 py-5' >
+  
+                        
                         <div className="input-group mt-5">
                             <input type="file" className="form-control" id="inputGroupFile01" onChange={handleFileChosen} />
                             {/* <button className='btn btn-light btn-outline-secondary text-dark'>Upload</button> */}
                         </div>
                         <div className="input-group mt-5">
-                            <textarea className="form-control shadow-none" placeholder='Type in the case narrative...' rows={10} onChange={handleText}>{text}</textarea>
+                            <textarea className="form-control shadow-none" placeholder='Type in the case note narrative...' rows={10} onChange={(e) => setNarrativeInput(e.target.value)}>{narrativeInput}</textarea>
                         </div>
                         <div className='align-items-right'>
-                            <button className='btn btn-light btn-outline-secondary text-dark float-right mt-3' disabled={!text} onClick={handleGenerate}>Generate</button>
+                            <button className='btn btn-light btn-outline-secondary text-dark float-right mt-3' disabled={!narrativeInput} onClick={handleGenerate}>Generate</button>
                         </div>
+                        <div className = {styles.result}>{result}</div>
+                        {/* <div className = {styles.result}>
+                          <JsonTable data={result} />
+                        </div> */}
+                        
 
                     </form>
 
@@ -70,3 +152,15 @@ const Results = () => {
 }
 
 export default Results
+
+
+// onSubmit={onSubmit}
+
+// <input
+// type="text"
+// name="narrative"
+// placeholder="Enter a narrative"
+// value={narrativeInput}
+// onChange={(e) => setNarrativeInput(e.target.value)}
+// />
+// <input type="submit" value="Generate" />
