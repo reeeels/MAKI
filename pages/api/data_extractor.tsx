@@ -30,7 +30,7 @@ export default async function (req, res) {
       model: "text-davinci-002",
       prompt: generatePrompt(narrative), //animal --> case note narative
       temperature: 0.5,
-      max_tokens: 500,
+      max_tokens: 2000,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0
@@ -43,7 +43,7 @@ export default async function (req, res) {
       res.status(error.response.status).json(error.response.data);
     } else {
       console.error(`Error with OpenAI API request: ${error.message}`);
-      res.status(500).json({
+      res.status(2000).json({
         error: {
           message: 'An error occurred during your request.',
         }
@@ -56,7 +56,7 @@ function generatePrompt(narrative) {
   return `Using en_core_sci_lg version 0.5.1, 
   identify and classify the data found in a patient case narrative ${narrative} 
   based on the labels SYMPTOMS, MEDICAL_HISTORY,  PHYSICAL_EXAM, MEDICATION,TREATMENT. 
-  Return the result as a dictionary with the labels as keys and list of data as values. If the label has no data assign an empty list as its value.`;
+  Return the result as a dictionary with the labels as keys (with each key enclosed in double qoutes) and list of data as values (with each value enclosed in double qoutes). If the label has no data assign an empty list as its value.`;
 }
 
 
