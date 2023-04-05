@@ -2,6 +2,24 @@ import Head from 'next/head'
 import { useState } from 'react'
 import pdfjs from 'pdfjs-dist'
 import styles from '@/styles/Home.module.css'
+// import Table from './table'
+import JsonTable from './JsonTable';
+
+
+
+import { convertData } from './data_conversion';
+
+const inputData = {
+  name: ['Anom', 'Megha', 'Subham'],
+  age: ['19', '19', '25'],
+  gender: ['Male', 'Female', 'Male'],
+};
+
+const outputData = convertData(inputData);
+
+console.log(outputData);
+
+
 
 
 const Results = () => {
@@ -113,6 +131,11 @@ const Results = () => {
                         <div className='align-items-right'>
                             <button className='btn btn-light btn-outline-secondary text-dark float-right mt-3' disabled={!narrativeInput} onClick={handleGenerate}>Generate</button>
                         </div>
+                        <div className = {styles.result}>{result}</div>
+                        {/* <div className = {styles.result}>
+                          <JsonTable data={result} />
+                        </div> */}
+                        
 
                     </form>
 
