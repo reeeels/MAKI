@@ -39,9 +39,6 @@
     text-rendering: optimizelegibility;
     font-feature-settings: "kern";
     font-kerning: normal;
-    /* margin: 0px auto;
-    width: 790 px;
-    max-width: 100%; */
   }
 
   .landing_page_tagline {
@@ -88,4 +85,82 @@
   .landing_page_button:hover {
     transform: translateY(-5px);
   }
+
+  .title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .results_page_header {
+    font-family: Whyte, sans-serif;
+    font-style: normal;
+    font-size: 4rem;
+    font-weight: 800;
+    color: #F01716;
+    text-rendering: optimizelegibility;
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    margin-top: 2rem;
+  }
+
+  .startbox {
+    /* display: flex; */
+    align-items: left;
+    justify-content: left;
+    min-width: 210px;
+    padding-top: 0.5rem;
+    padding-left: 0.7rem;
+    border-top: 1px solid rgb(207, 212, 218);
+    border-left: 1px solid rgb(207, 212, 218);
+    border-right: 1px solid rgb(207, 212, 218);
+    border-bottom: 1px solid rgb(207, 212, 218);
+  }
+
+  .endbox {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    min-width: 210px;
+    padding-top: 0.5rem;
+    padding-left: 0.7rem;
+    border-bottom: 1px solid rgb(207, 212, 218);
+    border-left: 1px solid rgb(207, 212, 218);
+    border-right: 1px solid rgb(207, 212, 218);
+  }
+
+  .box {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    min-width: 210px;
+    padding-top: 0.5rem;
+    padding-left: 0.7rem;
+    border-left: 1px solid rgb(207, 212, 218);
+    border-right: 1px solid rgb(207, 212, 218);
+    border-bottom: 1px solid rgb(207, 212, 218);
+  }
+
+  .textbox{
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    justify-content: right;
+    width: 75%;
+    background-color: #e4e0e0;
+  }
+
+  .label {
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
   
+  .text {
+    font-size: 1.3rem;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    overflow-wrap: break-word;
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
+  }

@@ -55,7 +55,7 @@ export default async function (req, res) {
 function generatePrompt(narrative) {
   return `Using en_core_sci_lg version 0.5.1, 
   identify and classify the data found in a patient case narrative ${narrative} 
-  based on the labels SYMPTOMS, MEDICAL_HISTORY,  PHYSICAL_EXAM, MEDICATION,TREATMENT. 
+  based on the labels SYMPTOMS, MEDICAL_HISTORY, PHYSICAL_EXAM, MEDICATION, TREATMENT, SOCIAL_FACTOR. 
   Return the result as a dictionary with the labels as keys (with each key enclosed in double qoutes) and list of data as values (with each value enclosed in double qoutes). If the label has no data assign an empty list as its value.`;
 }
 
