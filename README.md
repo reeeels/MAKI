@@ -22,7 +22,7 @@ Our project's front end is built with a combination of **NextJS (React)** and **
 
 *Backend*:
 
-The backend was created using **TypeScript**, **Open AI GPT-3 API**, and **spaCy**. The core algorithm is a deep neural network language model derived from **Open AI GPT-3 API**, which has been trained on a large corpus of text data using unsupervised learning techniques. **GPT** allows **Maki** to understand the context of a given text input and generate coherent and contextually appropriate responses. 
+The backend was created using **Python**, **TypeScript**, **Open AI GPT-3 API**, and **spaCy**. The core algorithm is a deep neural network language model derived from **Open AI GPT-3 API**, which has been trained on a large corpus of text data using unsupervised learning techniques. **GPT** allows **Maki** to understand the context of a given text input and generate coherent and contextually appropriate responses. 
 
 In addition, **Maki** uses a pre-trained spaCy model called **“en_core_sci_lg”** - a full **spaCy** pipeline for biomedical data with a larger vocabulary and 600k word vectors. The  model uses **NLP** algorithms such as **named entity recognition** and **part-of-speech tagging** to extract relevant data and classify it according to predefined labels.
 
