@@ -3,5 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/results": "pages/results.js",
-  "/api/data_extractor": "pages/api/data_extractor.js"
+  "/api/data_extractor": "pages/api/data_extractor.js",
+  "/": "pages/index.js"
 }

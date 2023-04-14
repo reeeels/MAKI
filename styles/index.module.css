@@ -151,8 +151,6 @@
   .end_textbox{
     display: flex;
     flex-direction: column;
-    border-right: 1px solid rgb(207, 212, 218);
-    border-bottom: 1px solid rgb(207, 212, 218);
   }
   
 
