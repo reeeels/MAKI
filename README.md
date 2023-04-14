@@ -10,9 +10,15 @@ But it doesn’t have to be this way! Exciting technologies like **AI and ML** h
 
 
 # What MAKI does:
-By leveraging **NLP (Natural Language Processing) machine learning algorithms** and the **GPT (Generative Pre-trained Transformer) neural network language model**, **MAKI** identifies and classifies data found in case note narratives giving you the confidence to make informed decisions about patient care. Our app gives the user the liberty to select their preference of labels for the data including but not limited to **symptoms, medical history, physical exam, medication, and treatment**.
+By leveraging **NLP (Natural Language Processing) machine learning algorithms** and the **GPT (Generative Pre-trained Transformer) neural network language model**, **MAKI** identifies and classifies data found in case note narratives giving you the confidence to make informed decisions about patient care. Our app gives the user the liberty to select their preference of labels for the data including but not limited to **symptoms, medical history, physical exam, medication, treatment, and social factors**.
 
-In addition to its clean and modern aesthetic, **MAKI** is **inclusive** as it offers speech-to-text and text-to-speech features. The **intuitive interface** makes it easy to navigate complex medical data, so you can focus on what matters most - providing safe and effective care.
+In addition **MAKI** offers:
+- **Ease of Navigation**: Has an intuitive interface for easy navigation of complex medical data in addition to clean and modern aesthetic.
+- **Confidence**: Provides you confidence to make informed decisions about patient care
+- **Flexibility**: Enables you select your preferred labels for data including symptoms, medical history, physical exam, medication, and treatment.
+- **Inclusivity**: Will offer speech-to-text, text-to-speech, usage of handwritten notes, and gesture control capabilities.
+
+In essence, **MAKI** allows you focus on what’s most important - providing safe and effective care!
 
 
 # How we built MAKI:
@@ -28,11 +34,13 @@ The backend was created using **Python**, **TypeScript**, **Open AI GPT-3 API**,
 
 In addition, **MAKI** uses a pre-trained spaCy model called **“en_core_sci_lg”** - a full **spaCy** pipeline for biomedical data with a larger vocabulary and 600k word vectors. The  model uses **NLP** algorithms such as **named entity recognition** and **part-of-speech tagging** to extract relevant data and classify it according to predefined labels.
 
+The Operating System used for development is **UNIX**
+
 
 # Challenges we ran into:
-- Deciding on the machine learning model
-- As with many pre-trained models, the spaCy model initially found it difficult to classify the extracted data on labels other than its pre-defined one.
+- Deciding on the machine learning model and as with many pre-trained models, the spaCy model initially found it difficult to classify the extracted data on labels other than its pre-defined one.
 - Building a node.js application that utilises OpenAI API.
+- Presenting the classified data in a visually appealing format.
 
 # Accomplishments we’re proud of:
 - Developing a full-fledged MVP and one that can be easily “plugged and played” by **Eli Lilly**.
@@ -40,20 +48,21 @@ In addition, **MAKI** uses a pre-trained spaCy model called **“en_core_sci_lg�
 
 
 # What we learned:
-- Gained clarity on the best way to merge interests in technology and healthcare and understood the limitless potentential of the interesection of both fields. 
-- Trusting every member of the team to complete their parts is super important in mAKIng a team work.
+- Gained clarity on the best way to merge interests in technology and healthcare and understood the limitless potential of the interesection of both fields. 
+- Trusting every member of the team to complete their parts is super important in MAKIng a team work.
 
 # What’s next for MAKI:
 - Customize the en_core_sci_lg model on our own labeled data including training the model on our specific dataset to improve its ability to recognize entities in our domain. 
-- Augment **MAKI** with additional accessibility features like gesture control
-- Automate and Implement the next steps of the Global Safety Patient Process after identification and classification of risks i.e assessment and analysis of risks, implementation of safety measures, monitoring and evaluation, communication and collaboration, continuous learning and improvement 
+- Augment **MAKI** with additional accessibility features like gesture control and speech-to-text.
+- Automate and Implement the next steps of the Global Safety Patient Process after identification and classification of risks i.e assessment and analysis of risks, implementation of safety measures, monitoring and evaluation, communication and collaboration, continuous learning and improvement.
+- Allow conversion of handwritten case notes to text-based and then generating classified data based on text.
 
 
+Come join the revolution in patient safety with **MAKI**!
 
-Join the revolution in patient safety with **MAKI**.
 
-
-# Try it out
+# Relevant Links
+- Deployed Webapp [https://maki-lilly.herokuapp.com](https://maki-lilly.herokuapp.com)
 - Github [@github]( https://github.com/reeeels/MAKI)
 - Presentation [@presentation](https://docs.google.com/presentation/d/1zaPoWmBeCDl69FFItpxflnEZfHjmvVwJTIyUnh4uj6A/edit?usp=sharing)
 - Figma [@figma](https://www.figma.com/file/P81kNcdv5OqpxOfMXMGkco?node-id=0:1&comments-enabled=1&locale=en)
