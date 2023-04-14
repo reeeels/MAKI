@@ -4,8 +4,6 @@ import Table from './table';
 import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
 import { motion } from 'framer-motion';
 import pdfjsLib from 'pdfjs-dist';
-import * as docx from 'docx';
-import { Document } from 'docx'
 import PizZip from 'pizzip';
 import Docxtemplater from 'docxtemplater';
 
@@ -20,12 +18,6 @@ const Results = () => {
     setNarrativeInput(content)
   }
 
-  // const handleFileChosen = (e: any) => {
-  //   const reader = new FileReader()
-  //   reader.onloadend = handleFileRead
-  //   reader.readAsText(e.target.files[0])
-  // }
-
   const handleFileChosen = async (e: any) => {
 
     const file = e.target.files[0];
@@ -38,26 +30,19 @@ const Results = () => {
 
       const text = convertPdfToText(file)
       setNarrativeInput(text)
-      
-    } else if (fileType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-      // const text = await parseDocx(file);
-      // setNarrativeInput(text);
 
-      // Read the file using the docx library
-      
+    } else if (fileType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
       const reader = new FileReader();
       reader.onload = (e) => {
         const content = e.target.result;
-        var doc = new Docxtemplater(new PizZip(content), {delimiters: {start: '12op1j2po1j2poj1po', end: 'op21j4po21jp4oj1op24j'}});
+        var doc = new Docxtemplater(new PizZip(content), { delimiters: { start: '12op1j2po1j2poj1po', end: 'op21j4po21jp4oj1op24j' } });
         var text = doc.getFullText();
-        console.log(typeof text);
         setNarrativeInput(text);
 
       };
       reader.readAsBinaryString(file);
 
     } else {
-      console.log(file.type)
       const reader = new FileReader();
 
       reader.onload = (event) => {
@@ -74,7 +59,6 @@ const Results = () => {
     const reader = new FileReader();
     reader.onload = async (event) => {
       const data = event.target.result;
-      console.log(data, typeof data)
       const arrayBuffer = data;
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       let text = '';
@@ -83,12 +67,11 @@ const Results = () => {
         const content = await page.getTextContent();
         text += content.items.map((item) => item['str']).join('');
       }
-      console.log(text); // or do whatever you want with the text
     };
     reader.readAsArrayBuffer(file);
   };
 
-  
+
 
   async function handleGenerate(e: any) {
     e.preventDefault();
