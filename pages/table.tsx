@@ -24,9 +24,11 @@ const Table = (props) => {
                             <div className={styles.box}>
                                 <h4 className={styles.label}>MEDICAL HISTORY</h4>
                             </div>
-                            {parsed[0].MEDICAL_HISTORY.map((history) => (
-                                <h4 className={styles.text}>{history},</h4>
-                            ))}
+                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                {parsed[0].MEDICAL_HISTORY.map((history) => (
+                                    <h4 className={styles.text}>{history},</h4>
+                                ))}
+                            </div>
                         </div>
                         <div className='d-flex flex-row'>
                             <div className={styles.box}>
@@ -42,14 +44,14 @@ const Table = (props) => {
                             <div className={styles.box}>
                                 <h4 className={styles.label}>MEDICATIONS</h4>
                             </div>
-                            <div style={{display: 'flex', flexDirection: 'column'}}>
+                            <div style={{ display: 'flex', flexDirection: 'column' }}>
                                 {parsed[0].MEDICATION.map((medication) => (
                                     <h4 className={styles.text}>{medication},</h4>
                                 ))}
                             </div>
                         </div>
                         <div className='d-flex flex-row'>
-                            <div className={styles.endbox}>
+                            <div className={styles.box}>
                                 <h4 className={styles.label}>TREATMENTS</h4>
                             </div>
                             <div className={styles.textbox}>
@@ -62,9 +64,11 @@ const Table = (props) => {
                             <div className={styles.endbox}>
                                 <h4 className={styles.label}>SOCIAL FACTORS</h4>
                             </div>
-                            {parsed[0].SOCIAL_FACTOR.map((factor) => (
-                                <h4 className={styles.text}>{factor},</h4>
-                            ))}
+                            <div className={styles.end_textbox}>
+                                {parsed[0].SOCIAL_FACTOR.map((factor) => (
+                                    <h4 className={styles.text}>{factor},</h4>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </>

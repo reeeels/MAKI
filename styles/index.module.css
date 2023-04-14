@@ -118,7 +118,6 @@
   }
 
   .endbox {
-    display: flex;
     align-items: left;
     justify-content: left;
     min-width: 210px;
@@ -130,7 +129,6 @@
   }
 
   .box {
-    display: flex;
     align-items: left;
     justify-content: left;
     min-width: 210px;
@@ -149,6 +147,14 @@
     width: 75%;
     background-color: #e4e0e0;
   }
+
+  .end_textbox{
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgb(207, 212, 218);
+    border-bottom: 1px solid rgb(207, 212, 218);
+  }
+  
 
   .label {
     font-size: 1.3rem;
