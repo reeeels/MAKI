@@ -3,6 +3,12 @@ import styles from '@/styles/index.module.css';
 import Table from './table';
 import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
 import { motion } from 'framer-motion';
+import pdfjsLib from 'pdfjs-dist';
+import * as docx from 'docx';
+import { Document } from 'docx'
+import PizZip from 'pizzip';
+import Docxtemplater from 'docxtemplater';
+
 
 const Results = () => {
   const [fileData, setFileData] = useState('');
@@ -14,11 +20,75 @@ const Results = () => {
     setNarrativeInput(content)
   }
 
-  const handleFileChosen = (e: any) => {
-    const reader = new FileReader()
-    reader.onloadend = handleFileRead
-    reader.readAsText(e.target.files[0])
+  // const handleFileChosen = (e: any) => {
+  //   const reader = new FileReader()
+  //   reader.onloadend = handleFileRead
+  //   reader.readAsText(e.target.files[0])
+  // }
+
+  const handleFileChosen = async (e: any) => {
+
+    const file = e.target.files[0];
+    const fileType = file.type;
+
+    if (!file) {
+      alert('Please select a file');
+      return;
+    } else if (fileType === 'application/pdf') {
+
+      const text = convertPdfToText(file)
+      setNarrativeInput(text)
+      
+    } else if (fileType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+      // const text = await parseDocx(file);
+      // setNarrativeInput(text);
+
+      // Read the file using the docx library
+      
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const content = e.target.result;
+        var doc = new Docxtemplater(new PizZip(content), {delimiters: {start: '12op1j2po1j2poj1po', end: 'op21j4po21jp4oj1op24j'}});
+        var text = doc.getFullText();
+        console.log(typeof text);
+        setNarrativeInput(text);
+
+      };
+      reader.readAsBinaryString(file);
+
+    } else {
+      console.log(file.type)
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const text = event.target.result;
+        setNarrativeInput(text);
+      };
+
+      reader.readAsText(file);
+    }
+
   }
+
+  const convertPdfToText = (file) => {
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      const data = event.target.result;
+      console.log(data, typeof data)
+      const arrayBuffer = data;
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      let text = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map((item) => item['str']).join('');
+      }
+      console.log(text); // or do whatever you want with the text
+    };
+    reader.readAsArrayBuffer(file);
+  };
+
+  
 
   async function handleGenerate(e: any) {
     e.preventDefault();
@@ -77,7 +147,7 @@ const Results = () => {
         <div className='col d-flex flex-column py-5 mt-4'>
           <form>
             <div className='input-group mt-5'>
-              <input type='file' className='form-control' id='inputGroupFile01' onChange={handleFileChosen} />
+              <input type='file' accept='.txt,.docx' className='form-control' id='inputGroupFile01' onChange={handleFileChosen} />
             </div>
             <div className='input-group mt-5'>
               <textarea className='form-control shadow-none' placeholder='Type in a case note narrative...' rows={10} onChange={(e) => setNarrativeInput(e.target.value)} value={narrativeInput}></textarea>
@@ -105,6 +175,6 @@ const Results = () => {
       </div>
     </div>
   )
-}
+};
 
 export default Results;
