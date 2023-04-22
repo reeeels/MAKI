@@ -6,12 +6,33 @@ import { motion } from 'framer-motion';
 import pdfjsLib from 'pdfjs-dist';
 import PizZip from 'pizzip';
 import Docxtemplater from 'docxtemplater';
+import { useSpeechRecognition } from 'react-speech-kit';
 
 
 const Results = () => {
   const [fileData, setFileData] = useState('');
   const [narrativeInput, setNarrativeInput] = useState(null);
   const [result, setResult] = useState();
+  const [show, setShow] = useState(false);
+  const { listen, stop } = useSpeechRecognition({
+    onResult: (result) => {
+      setNarrativeInput(result)
+    }
+  })
+
+  const startListen = () => {
+    setTimeout(() => {
+      listen({ continuous: true });
+      setShow(true);
+    }, 1500);
+  }
+
+  const stopListen = () => {
+    setTimeout(() => {
+      stop();
+      setShow(false);
+    }, 1000);
+  }
 
   const handleFileRead = (e: any) => {
     const content = e.target.result
@@ -129,8 +150,12 @@ const Results = () => {
       <div className='row'>
         <div className='col d-flex flex-column py-5 mt-4'>
           <form>
+            {show && <div className={styles.listening}>Listening...</div>}
             <div className='input-group mt-5'>
               <input type='file' accept='.txt,.docx' className='form-control' id='inputGroupFile01' onChange={handleFileChosen} />
+              <div className='btn btn-outline-secondary' onMouseEnter={startListen} onMouseLeave={stopListen}>
+                🎤
+              </div>
             </div>
             <div className='input-group mt-5'>
               <textarea className='form-control shadow-none' placeholder='Type in a case note narrative...' rows={10} onChange={(e) => setNarrativeInput(e.target.value)} value={narrativeInput}></textarea>
