@@ -34,6 +34,14 @@ const Results = () => {
     }, 1000);
   }
 
+  const handleListen = () => {
+    if (show) {
+      stopListen();
+    } else {
+      startListen();
+    }
+  }
+
   const handleFileRead = (e: any) => {
     const content = e.target.result
     setNarrativeInput(content)
@@ -149,11 +157,11 @@ const Results = () => {
       <a style={{ textDecoration: 'none' }} href='/' ><h1 className={styles.results_page_header}>MAKI</h1></a>
       <div className='row'>
         <div className='col d-flex flex-column py-5 mt-4'>
+          {show && <div className={styles.listening}>Listening...</div>}
           <form>
-            {show && <div className={styles.listening}>Listening...</div>}
             <div className='input-group mt-5'>
               <input type='file' accept='.txt,.docx' className='form-control' id='inputGroupFile01' onChange={handleFileChosen} />
-              <div className='btn btn-outline-secondary' onMouseEnter={startListen} onMouseLeave={stopListen}>
+              <div className='btn btn-outline-secondary' onClick={handleListen}>
                 🎤
               </div>
             </div>
