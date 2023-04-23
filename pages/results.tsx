@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from '@/styles/index.module.css';
 import Table from './table';
 import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
+import MicIcon from '@mui/icons-material/Mic';
 import { motion } from 'framer-motion';
 import pdfjsLib from 'pdfjs-dist';
 import PizZip from 'pizzip';
@@ -162,7 +163,7 @@ const Results = () => {
             <div className='input-group mt-5'>
               <input type='file' accept='.txt,.docx' className='form-control' id='inputGroupFile01' onChange={handleFileChosen} />
               <div className='btn btn-outline-secondary' onClick={handleListen}>
-                🎤
+                <MicIcon fontSize='medium' />
               </div>
             </div>
             <div className='input-group mt-5'>
