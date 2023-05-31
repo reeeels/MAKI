@@ -1,5 +1,7 @@
 # MAKI
 
+### Winners Lilly HBCU Hackathon 2023 - Best Solution to a Problem Statement.  
+
 # Pitch: 
 Introducing **MAKI** - your smart solution for highlighting safety narratives. With our AI-powered app, you can review patient case notes quickly and accurately, identifying and classifying potential safety concerns before they become critical. 
 
